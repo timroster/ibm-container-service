@@ -23,7 +23,7 @@ function checkDependencies() {
 # cleanEnvironment: Cleans the services, volumes, and pods from the Kubernetes cluster.
 #
 function cleanEnvironment() {
-    HELM_RELEASES=$(helm list | tail -n +2 | grep ibm-blockchain | awk '{ print $1 }')
+    HELM_RELEASES=$(helm list | tail -n +2 | awk '{ print $1 }')
 
     # Delete any existing releases
     if [[ ! -z ${HELM_RELEASES// /} ]]; then
@@ -94,7 +94,7 @@ function checkPodStatus() {
 # startNetwork: Starts the CA, orderer, and peer containers.
 #
 function startNetwork() {
-    RELEASE_NAME="ibm-blockchain-network"
+    RELEASE_NAME="network"
     TOTAL_RUNNING=4
     TOTAL_COMPLETED=1
 
@@ -115,7 +115,7 @@ function startNetwork() {
 # startChannel: Starts the create and join channel containers.
 #
 function startChannel() {
-    RELEASE_NAME="ibm-blockchain-channel"
+    RELEASE_NAME="channel"
     TOTAL_RUNNING=4
     TOTAL_COMPLETED=4
 
@@ -136,7 +136,7 @@ function startChannel() {
 # startChaincode: Starts the install and instantiate chaincode containers.
 #
 function startChaincode() {
-    RELEASE_NAME="ibm-blockchain-chaincode"
+    RELEASE_NAME="chaincode"
     TOTAL_RUNNING=4
     TOTAL_COMPLETED=7
 
@@ -156,7 +156,7 @@ function startChaincode() {
 # startComposer: Starts the Hyperledger Composer containers.
 #
 function startComposer() {
-    RELEASE_NAME="ibm-blockchain-composer"
+    RELEASE_NAME="composer"
     TOTAL_RUNNING=6
     TOTAL_COMPLETED=8
 

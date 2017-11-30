@@ -1,5 +1,5 @@
 # TODO make conditional on storageClass in values.yaml 
-# ---
+#---
 #kind: PersistentVolume
 #apiVersion: v1
 #metadata:
@@ -17,7 +17,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: shared
+  name: composer-pvc
   annotations:
     volume.beta.kubernetes.io/storage-class: "nfs-dynamic"
 spec:
